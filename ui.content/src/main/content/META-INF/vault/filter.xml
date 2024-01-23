@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/employdemy_assistment" mode="merge"/>
+    <filter root="/content/employdemy_assistment" mode="merge"/>
+    <filter root="/content/dam/employdemy_assistment/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/employdemy_assistment" mode="merge"/>
+</workspaceFilter>
