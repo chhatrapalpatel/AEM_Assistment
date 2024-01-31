@@ -28,14 +28,18 @@ import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.osgi.service.component.annotations.Component;
 
+import com.assistment.core.Service.QueryOsgiService;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 
 import java.util.Optional;
 
+
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class HelloWorldModel {
+@Component(service = QueryOsgiService.class)
+public class CpComponet {
 
     @ValueMapValue(name=PROPERTY_RESOURCE_TYPE, injectionStrategy=InjectionStrategy.OPTIONAL)
     @Default(values="No resourceType")
@@ -50,14 +54,7 @@ public class HelloWorldModel {
 
     @PostConstruct
     protected void init() {
-        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-        String currentPagePath = Optional.ofNullable(pageManager)
-                .map(pm -> pm.getContainingPage(currentResource))
-                .map(Page::getPath).orElse("");
-
-        message = "Hello World!\n"
-            + "Resource type is: " + resourceType + "\n"
-            + "Current page is:  " + currentPagePath + "\n";
+        
     }
 
     public String getMessage() {
